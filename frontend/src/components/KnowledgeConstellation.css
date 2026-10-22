@@ -1,0 +1,379 @@
+/* ==========================================================================
+   LEARNWISE KNOWLEDGE CONSTELLATION (Spatial Graph Canvas)
+   ========================================================================== */
+
+.constellation-container {
+    width: 100%;
+    background: linear-gradient(180deg, rgba(15, 23, 42, 0.6) 0%, rgba(8, 12, 20, 0.8) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 24px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+[data-theme="light"] .constellation-container {
+    background: #ffffff;
+    border-color: rgba(0, 0, 0, 0.08);
+}
+
+/* Header */
+.constellation-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.25rem 1.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+[data-theme="light"] .constellation-header {
+    border-bottom-color: rgba(0, 0, 0, 0.06);
+}
+
+.constellation-title-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+}
+
+.constellation-title {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--color-text-primary);
+    letter-spacing: -0.02em;
+    margin: 0;
+}
+
+.constellation-controls {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+}
+
+.constellation-btn {
+    width: 28px;
+    height: 28px;
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--color-text-primary);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.85rem;
+    font-weight: 700;
+    transition: all 0.15s;
+}
+
+.constellation-btn:hover {
+    background: rgba(99, 102, 241, 0.2);
+    border-color: rgba(99, 102, 241, 0.4);
+}
+
+[data-theme="light"] .constellation-btn {
+    background: #f1f5f9;
+    border-color: #cbd5e1;
+    color: #0f172a;
+}
+
+/* Workspace Split */
+.constellation-workspace {
+    display: grid;
+    grid-template-columns: minmax(0, 1.45fr) minmax(320px, 1fr);
+    min-height: 480px;
+}
+
+@media (max-width: 960px) {
+    .constellation-workspace {
+        grid-template-columns: 1fr;
+    }
+}
+
+.constellation-canvas-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    overflow: hidden;
+    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.constellation-svg {
+    width: 100%;
+    height: 100%;
+    min-height: 400px;
+    overflow: visible;
+}
+
+/* Node Elements */
+.constellation-node-group {
+    cursor: pointer;
+    outline: none;
+    transition: all 0.2s ease;
+}
+
+.constellation-node-group .node-core {
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Completed Node */
+.constellation-node-group.completed .node-core {
+    fill: #10b981;
+    stroke: #34d399;
+    stroke-width: 2.5;
+}
+
+/* Active Node */
+.constellation-node-group.active .node-core {
+    fill: #3b82f6;
+    stroke: #818cf8;
+    stroke-width: 3;
+}
+
+/* Upcoming Node */
+.constellation-node-group.upcoming .node-core {
+    fill: rgba(30, 41, 59, 0.8);
+    stroke: rgba(255, 255, 255, 0.2);
+    stroke-width: 1.5;
+}
+
+.constellation-node-group:hover .node-core,
+.constellation-node-group.selected .node-core {
+    transform: scale(1.2);
+    transform-origin: center;
+}
+
+/* Orbit Ring */
+.orbit-ring {
+    fill: none;
+    stroke: #6366f1;
+    stroke-width: 1.5;
+    stroke-dasharray: 4, 3;
+    opacity: 0.8;
+    animation: orbitSpin 12s linear infinite;
+    transform-origin: center;
+}
+
+@keyframes orbitSpin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.node-text {
+    fill: #ffffff;
+    font-size: 11px;
+    font-weight: 800;
+    pointer-events: none;
+}
+
+.node-label {
+    fill: var(--color-text-secondary);
+    font-size: 10.5px;
+    font-weight: 600;
+    pointer-events: none;
+    transition: fill 0.2s;
+}
+
+.node-label.selected-text,
+.constellation-node-group:hover .node-label {
+    fill: var(--color-text-primary);
+    font-weight: 700;
+}
+
+/* Node Inspector Panel */
+.node-inspector {
+    border-left: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(15, 23, 42, 0.45);
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+[data-theme="light"] .node-inspector {
+    border-left-color: rgba(0, 0, 0, 0.08);
+    background: #f8fafc;
+}
+
+.inspector-header {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.inspector-badge-row {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+}
+
+.inspector-title {
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: var(--color-text-primary);
+    line-height: 1.3;
+    margin: 0;
+}
+
+.inspector-desc {
+    font-size: 0.88rem;
+    color: var(--color-text-secondary);
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* Telemetry Grid */
+.inspector-telemetry-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+}
+
+.telemetry-box {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 12px;
+    padding: 0.75rem 0.9rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+[data-theme="light"] .telemetry-box {
+    background: #ffffff;
+    border-color: #e2e8f0;
+}
+
+.telemetry-metric {
+    font-size: 0.95rem;
+    color: var(--color-text-primary);
+}
+
+/* Resources */
+.inspector-resources {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.inspector-resource-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.inspector-resource-link {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.55rem 0.75rem;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    color: var(--color-text-primary);
+    text-decoration: none;
+    font-size: 0.84rem;
+    transition: all 0.15s;
+}
+
+.inspector-resource-link:hover {
+    background: rgba(99, 102, 241, 0.15);
+    border-color: rgba(99, 102, 241, 0.35);
+    color: #818cf8;
+}
+
+.res-icon {
+    color: #818cf8;
+    flex-shrink: 0;
+}
+
+.res-title {
+    flex: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.ext-icon {
+    color: var(--color-text-muted);
+    flex-shrink: 0;
+}
+
+/* Actions */
+.inspector-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-top: auto;
+}
+
+.inspector-action-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.65rem 1rem;
+    border-radius: 10px;
+    font-size: 0.86rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    border: none;
+}
+
+.inspector-action-btn.primary {
+    background: linear-gradient(135deg, #fbbf24, #f59e0b);
+    color: #0f172a;
+    box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);
+}
+
+.inspector-action-btn.primary:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 16px rgba(245, 158, 11, 0.4);
+}
+
+.inspector-action-btn.secondary {
+    background: rgba(99, 102, 241, 0.15);
+    border: 1px solid rgba(99, 102, 241, 0.3);
+    color: #818cf8;
+}
+
+.inspector-action-btn.secondary:hover {
+    background: rgba(99, 102, 241, 0.25);
+    color: #ffffff;
+}
+
+.inspector-action-btn.toggle-btn {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--color-text-primary);
+}
+
+.inspector-action-btn.toggle-btn.completed {
+    background: rgba(16, 185, 129, 0.12);
+    border-color: rgba(16, 185, 129, 0.3);
+    color: #34d399;
+}
+
+.inspector-action-btn.toggle-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.constellation-empty {
+    padding: 4rem 2rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    color: var(--color-text-muted);
+}
+
+.constellation-empty-icon {
+    color: #818cf8;
+    opacity: 0.5;
+}

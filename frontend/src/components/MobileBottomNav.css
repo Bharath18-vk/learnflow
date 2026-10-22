@@ -1,0 +1,147 @@
+/* ==========================================================================
+   LEARNWISE MOBILE BOTTOM NAVIGATION DOCK
+   ========================================================================== */
+
+.mobile-bottom-dock {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 990;
+    padding: 0.4rem 1rem max(0.5rem, env(safe-area-inset-bottom));
+    background: linear-gradient(180deg, rgba(8, 12, 20, 0.85) 0%, rgba(8, 12, 20, 0.98) 100%);
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    box-shadow: 0 -8px 24px rgba(0, 0, 0, 0.5);
+}
+
+[data-theme="light"] .mobile-bottom-dock {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.9) 0%, rgba(248, 250, 252, 0.98) 100%);
+    border-top-color: rgba(0, 0, 0, 0.08);
+    box-shadow: 0 -6px 20px rgba(0, 0, 0, 0.06);
+}
+
+@media (max-width: 768px) {
+    .mobile-bottom-dock {
+        display: block;
+    }
+}
+
+.mobile-dock-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    max-width: 480px;
+    margin: 0 auto;
+}
+
+.mobile-dock-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.2rem;
+    background: transparent;
+    border: none;
+    padding: 0.35rem 0.6rem;
+    color: var(--color-text-muted);
+    cursor: pointer;
+    transition: all 0.15s ease;
+    border-radius: 10px;
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+}
+
+.mobile-dock-item:active {
+    transform: scale(0.92);
+}
+
+.dock-icon-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+}
+
+.dock-label {
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    transition: color 0.15s ease;
+}
+
+.mobile-dock-item.active {
+    color: #818cf8;
+}
+
+[data-theme="light"] .mobile-dock-item.active {
+    color: #2563eb;
+}
+
+.mobile-dock-item.active .dock-icon-wrapper {
+    color: #818cf8;
+    filter: drop-shadow(0 0 8px rgba(129, 140, 248, 0.6));
+}
+
+[data-theme="light"] .mobile-dock-item.active .dock-icon-wrapper {
+    color: #2563eb;
+    filter: drop-shadow(0 0 6px rgba(37, 99, 235, 0.4));
+}
+
+/* Center Copilot Button */
+.copilot-center-btn {
+    transform: translateY(-8px);
+}
+
+.dock-copilot-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #3b82f6, #6366f1);
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 16px rgba(99, 102, 241, 0.5), 0 0 0 3px rgba(15, 23, 42, 0.8);
+    transition: all 0.2s ease;
+}
+
+[data-theme="light"] .dock-copilot-icon {
+    box-shadow: 0 4px 14px rgba(37, 99, 235, 0.35), 0 0 0 3px #ffffff;
+}
+
+.copilot-center-btn:active .dock-copilot-icon {
+    transform: scale(0.92);
+}
+
+.copilot-center-btn .dock-label {
+    color: #818cf8;
+    font-weight: 800;
+    margin-top: 2px;
+}
+
+[data-theme="light"] .copilot-center-btn .dock-label {
+    color: #2563eb;
+}
+
+/* Dock Badge */
+.dock-badge {
+    position: absolute;
+    top: -4px;
+    right: -6px;
+    background: #f43f5e;
+    color: #ffffff;
+    font-size: 0.6rem;
+    font-weight: 800;
+    padding: 0.05rem 0.3rem;
+    border-radius: 999px;
+    border: 2px solid #080c14;
+}
+
+[data-theme="light"] .dock-badge {
+    border-color: #ffffff;
+}

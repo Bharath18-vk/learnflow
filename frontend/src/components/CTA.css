@@ -1,31 +1,25 @@
-/* =========================
-   CTA Section
-========================= */
-
 .cta-section {
-    padding: 6rem 2rem 8rem;
+    padding: 8rem 2rem 10rem;
     position: relative;
     overflow: hidden;
 }
 
 .cta-container {
-    max-width: var(--max-width);
+    max-width: 1000px;
     margin: 0 auto;
 }
 
 .cta-card {
-    position: relative;
-    background: linear-gradient(135deg, rgba(18, 19, 26, 0.8) 0%, rgba(10, 11, 16, 0.9) 100%);
-    border: 1px solid var(--glass-border);
-    border-radius: 24px;
-    padding: 5rem 4rem;
+    border-radius: 32px;
+    padding: 6rem 4rem;
     text-align: center;
-    overflow: hidden;
-    box-shadow: var(--glass-shadow);
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 1.5rem;
+    justify-content: center;
+    gap: 2.2rem;
+    position: relative;
+    border: 1px solid var(--border-glass);
 }
 
 .cta-glow {
@@ -33,57 +27,80 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 80%;
-    height: 80%;
-    background: radial-gradient(circle, rgba(99, 102, 241, 0.15) 0%, transparent 70%);
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(99, 102, 241, 0.18) 0%, rgba(168, 85, 247, 0.12) 45%, transparent 70%);
     z-index: -1;
-    filter: blur(40px);
+    filter: blur(60px);
     pointer-events: none;
 }
 
+.cta-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    align-self: center;
+    gap: 0.5rem;
+    padding: 0.4rem 1.2rem;
+    border-radius: 100px;
+    background: rgba(99, 102, 241, 0.1);
+    border: 1px solid rgba(99, 102, 241, 0.25);
+    color: var(--color-text-accent);
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    margin: 0 auto;
+}
+
 .cta-title {
-    font-size: 2.5rem;
-    font-weight: 800;
-    color: #fff;
-    letter-spacing: -0.5px;
+    font-size: 3.2rem;
+    color: var(--color-text-primary);
+    letter-spacing: -0.03em;
     line-height: 1.2;
-    max-width: 600px;
+    max-width: 760px;
+    text-align: center;
+    margin: 0 auto;
 }
 
-.cta-description {
-    color: var(--text-secondary);
-    font-size: 1.1rem;
-    max-width: 640px;
-    line-height: 1.6;
-    margin-bottom: 1rem;
+.cta-subtitle {
+    color: var(--color-text-secondary);
+    font-size: 1.18rem;
+    max-width: 680px;
+    line-height: 1.7;
+    text-align: center;
+    margin: 0 auto;
 }
 
-.cta-actions {
+.cta-buttons {
     display: flex;
-    gap: 1.5rem;
+    gap: 1.25rem;
+    align-items: center;
+    justify-content: center;
+    align-self: center;
+    margin: 0 auto;
 }
 
-/* Responsive adjustments */
+
 @media (max-width: 768px) {
     .cta-section {
-        padding: 4rem 1.5rem 6rem;
+        padding: 5rem 1.25rem 6rem;
     }
 
     .cta-card {
-        padding: 3.5rem 2rem;
+        padding: 4rem 1.75rem;
+        gap: 1.6rem;
     }
 
     .cta-title {
-        font-size: 2rem;
+        font-size: 2.35rem;
     }
 
-    .cta-actions {
+    .cta-buttons {
         flex-direction: column;
         width: 100%;
-        gap: 1rem;
     }
 
-    .cta-actions .btn {
+    .cta-buttons .btn {
         width: 100%;
     }
 }

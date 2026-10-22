@@ -1,45 +1,24 @@
 import React from 'react';
+import { Sparkles } from 'lucide-react';
 import './Footer.css';
 
 function Footer() {
     return (
-        <footer className="footer">
-            <div className="footer-container">
-                <div className="footer-brand">
-                    <div className="footer-logo">
-                        Learn<span>Wise</span>
+        <footer className="footer-minimal">
+            <div className="footer-minimal-container">
+                <div className="footer-minimal-brand">
+                    <div className="footer-logo-icon">
+                        <Sparkles size={15} />
                     </div>
-                    <p className="footer-tagline">
-                        Empowering learners worldwide with personalized, AI-driven education paths.
-                    </p>
+                    <span className="footer-logo-text">Learn<span className="text-gradient">Wise</span> AI</span>
+                    <span className="footer-divider">•</span>
+                    <span className="footer-copyright">© {new Date().getFullYear()} All rights reserved.</span>
                 </div>
-                <div className="footer-column">
-                    <h4>Product</h4>
-                    <ul>
-                        <li><a href="#features">Features</a></li>
-                        <li><a href="#how-it-works">How It Works</a></li>
-                        <li><a href="#pricing">Pricing</a></li>
-                    </ul>
+
+                <div className="footer-minimal-links">
+                    <a href="#features">Features</a>
+                    <a href="#how-it-works">How It Works</a>
                 </div>
-                <div className="footer-column">
-                    <h4>Company</h4>
-                    <ul>
-                        <li><a href="#about">About Us</a></li>
-                        <li><a href="#careers">Careers</a></li>
-                        <li><a href="#blog">Blog</a></li>
-                    </ul>
-                </div>
-                <div className="footer-column">
-                    <h4>Legal</h4>
-                    <ul>
-                        <li><a href="#privacy">Privacy Policy</a></li>
-                        <li><a href="#terms">Terms of Service</a></li>
-                        <li><a href="#cookies">Cookie Policy</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div className="footer-bottom">
-                <p>© 2026 LearnWise. All rights reserved.</p>
             </div>
         </footer>
     );

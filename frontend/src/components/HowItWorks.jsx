@@ -1,47 +1,65 @@
-import "./HowItWorks.css";
+import React from 'react';
+import { motion } from 'framer-motion';
+import { Sliders, Sparkles, CheckCircle2 } from 'lucide-react';
+import { GlassCard } from './ui';
+import './HowItWorks.css';
 
-const steps = [
+const stepsData = [
     {
-        id: 1,
-        icon: "🎯",
-        title: "Choose Your Goal",
-        description:
-            "Tell LearnWise what you want to learn, your current level, and how much time you can study.",
+        number: '01',
+        icon: <Sliders size={24} />,
+        title: 'Define Your Goal',
+        description: 'Tell us what you want to learn, your starting skill level, and how much time you can dedicate each week.'
     },
     {
-        id: 2,
-        icon: "🤖",
-        title: "AI Creates Your Roadmap",
-        description:
-            "Our AI builds a personalized roadmap with carefully selected learning resources.",
+        number: '02',
+        icon: <Sparkles size={24} />,
+        title: 'Get Your Custom Roadmap',
+        description: 'LearnWise maps prerequisites, breaks complex topics into bite-sized milestones, and pairs every step with curated resources.'
     },
     {
-        id: 3,
-        icon: "🚀",
-        title: "Learn & Track Progress",
-        description:
-            "Follow your roadmap, complete milestones, and monitor your learning journey.",
-    },
+        number: '03',
+        icon: <CheckCircle2 size={24} />,
+        title: 'Learn, Test & Master',
+        description: 'Follow interactive lessons, verify your skills with active-recall quizzes, track your streak, and build genuine mastery.'
+    }
 ];
 
 function HowItWorks() {
     return (
-        <section id="how-it-works" className="how-it-works-section">
+        <section className="how-it-works-section" id="how-it-works">
             <div className="how-it-works-container">
                 <div className="section-header">
-                    <h2 className="section-title">How LearnWise <span>Works</span></h2>
+                    <div className="section-eyebrow">
+                        <Sparkles size={13} />
+                        <span>Streamlined 3-Step Process</span>
+                    </div>
+                    <h2 className="section-title">
+                        How <span className="text-gradient">LearnWise</span> Works
+                    </h2>
                     <p className="section-subtitle">
-                        Learning becomes simple with our three-step process.
+                        Turn any learning goal into a clear, personalized step-by-step roadmap in under 30 seconds.
                     </p>
                 </div>
 
                 <div className="steps-grid">
-                    {steps.map((step) => (
-                        <div className="step-card" key={step.id}>
-                            <div className="step-icon">{step.icon}</div>
-                            <h3 className="step-title">{step.title}</h3>
-                            <p className="step-description">{step.description}</p>
-                        </div>
+                    {stepsData.map((step, index) => (
+                        <motion.div
+                            key={index}
+                            initial={{ opacity: 0, y: 30 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true, margin: "-50px" }}
+                            transition={{ duration: 0.5, delay: index * 0.15, ease: [0.16, 1, 0.3, 1] }}
+                        >
+                            <GlassCard className="step-card">
+                                <span className="step-number">{step.number}</span>
+                                <div className="step-icon-wrapper">
+                                    {step.icon}
+                                </div>
+                                <h3 className="step-title">{step.title}</h3>
+                                <p className="step-description">{step.description}</p>
+                            </GlassCard>
+                        </motion.div>
                     ))}
                 </div>
             </div>

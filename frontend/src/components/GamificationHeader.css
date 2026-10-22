@@ -1,0 +1,181 @@
+.gamification-bar-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.875rem 1.25rem;
+    background: rgba(255, 255, 255, 0.04);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+.gamification-stat-group,
+.gamification-level-group {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.streak-badge {
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+    padding: 0.5rem 0.875rem;
+    background: rgba(255, 120, 0, 0.1);
+    border: 1px solid rgba(255, 120, 0, 0.25);
+    border-radius: 12px;
+    color: #ff9800;
+}
+
+.streak-badge.active-streak {
+    background: rgba(255, 87, 34, 0.15);
+    border-color: rgba(255, 87, 34, 0.4);
+    box-shadow: 0 0 15px rgba(255, 87, 34, 0.2);
+}
+
+.flame-icon {
+    width: 22px;
+    height: 22px;
+    color: #ff5722;
+    filter: drop-shadow(0 0 6px rgba(255, 87, 34, 0.6));
+    animation: flamePulse 2s infinite ease-in-out;
+}
+
+@keyframes flamePulse {
+    0%, 100% { transform: scale(1); filter: drop-shadow(0 0 6px rgba(255, 87, 34, 0.6)); }
+    50% { transform: scale(1.1); filter: drop-shadow(0 0 12px rgba(255, 152, 0, 0.9)); }
+}
+
+.stat-text-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.stat-value {
+    font-size: 0.95rem;
+    font-weight: 700;
+    line-height: 1.1;
+    color: #fff;
+}
+
+.stat-sublabel {
+    font-size: 0.725rem;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.shield-badge {
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+    padding: 0.45rem 0.75rem;
+    background: rgba(59, 130, 246, 0.1);
+    border: 1px solid rgba(59, 130, 246, 0.25);
+    border-radius: 10px;
+    color: #60a5fa;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.shield-icon {
+    width: 16px;
+    height: 16px;
+    color: #3b82f6;
+}
+
+.level-badge {
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+    padding: 0.5rem 0.875rem;
+    background: rgba(168, 85, 247, 0.1);
+    border: 1px solid rgba(168, 85, 247, 0.25);
+    border-radius: 12px;
+}
+
+.trophy-icon {
+    width: 20px;
+    height: 20px;
+    color: #c084fc;
+}
+
+.level-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.level-title {
+    font-size: 0.9rem;
+    color: #e9d5ff;
+    font-weight: 600;
+}
+
+.xp-total {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    font-size: 0.75rem;
+    color: #fbbf24;
+    font-weight: 700;
+}
+
+.xp-icon {
+    width: 12px;
+    height: 12px;
+    fill: currentColor;
+}
+
+.xp-progress-column {
+    display: flex;
+    flex-direction: column;
+    width: 160px;
+    gap: 0.25rem;
+}
+
+.xp-progress-header {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.725rem;
+    color: rgba(255, 255, 255, 0.7);
+    font-weight: 500;
+}
+
+.sparkle-icon {
+    width: 12px;
+    height: 12px;
+    color: #fbbf24;
+    display: inline;
+    vertical-align: -1px;
+}
+
+.xp-progress-bar-bg {
+    width: 100%;
+    height: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 999px;
+    overflow: hidden;
+}
+
+.xp-progress-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #8b5cf6, #ec4899);
+    border-radius: 999px;
+}
+
+@media (max-width: 640px) {
+    .gamification-bar-container {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .gamification-stat-group,
+    .gamification-level-group {
+        justify-content: space-between;
+    }
+    .xp-progress-column {
+        flex: 1;
+    }
+}

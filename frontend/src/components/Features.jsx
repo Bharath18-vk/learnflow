@@ -1,55 +1,71 @@
-import "./Features.css";
+import React from 'react';
+import { motion } from 'framer-motion';
+import { Compass, Sparkles, Activity, Layers, Target, ArrowRight } from 'lucide-react';
+import './Features.css';
 
-const features = [
+const featuresData = [
     {
-        id: 1,
-        icon: "🤖",
-        title: "AI-Powered Roadmaps",
-        description:
-            "Generate personalized learning roadmaps based on your goals, experience, and available study time.",
+        icon: <Compass size={24} />,
+        tag: "SPATIAL COGNITION",
+        title: 'Knowledge Constellations',
+        description: 'Explore learning pathways as connected spatial graphs. Concepts become nodes, prerequisites become conduits, and mastery radiates visual stability.'
     },
     {
-        id: 2,
-        icon: "📚",
-        title: "Curated Resources",
-        description:
-            "Get the best learning resources for each topic without wasting hours searching the internet.",
+        icon: <Sparkles size={24} />,
+        tag: "3-MODE COPILOT",
+        title: 'LearnWise Intelligence',
+        description: 'Switch effortlessly between EXPLAIN (simple clarity), GUIDE (Socratic hints), and CHALLENGE (harder drills) without repeating your context.'
     },
     {
-        id: 3,
-        icon: "📈",
-        title: "Progress Tracking",
-        description:
-            "Track your learning journey, monitor completed topics, and stay motivated with visual progress.",
+        icon: <Activity size={24} />,
+        tag: "DIAGNOSTIC PRACTICE",
+        title: 'Mistake Intelligence',
+        description: 'Diagnoses recurring conceptual pitfalls from micro-quizzes and synthesizes targeted practice drills to turn weak points into strengths.'
     },
     {
-        id: 4,
-        icon: "🎯",
-        title: "Stay Focused",
-        description:
-            "Avoid tutorial hopping by following one structured roadmap from start to finish.",
-    },
+        icon: <Target size={24} />,
+        tag: "INTENTION FIRST",
+        title: 'The Mastery Studio',
+        description: 'Replaces noisy analytics dashboards with a single focused intention: "What should I do right now?" to keep your cognitive momentum unbroken.'
+    }
 ];
 
 function Features() {
     return (
-        <section id="features" className="features-section">
+        <section className="features-section" id="features">
             <div className="features-container">
                 <div className="section-header">
-                    <h2 className="section-title">Why Choose <span>LearnWise</span>?</h2>
-                    <p className="section-subtitle">
-                        LearnWise helps you learn efficiently with AI-powered guidance,
-                        curated resources, and structured learning paths.
+                    <div className="section-eyebrow font-mono">
+                        <Sparkles size={13} />
+                        <span>THE COGNITIVE ARCHITECTURE</span>
+                    </div>
+                    <h2 className="section-title font-hero">
+                        Engineered for <span className="text-gradient">True Mastery</span>
+                    </h2>
+                    <p className="section-subtitle font-sans">
+                        LearnWise replaces passive video-watching and disconnected tutorials with an intelligent learning instrument.
                     </p>
                 </div>
 
                 <div className="features-grid">
-                    {features.map((feature) => (
-                        <div className="feature-card" key={feature.id}>
-                            <div className="feature-icon">{feature.icon}</div>
-                            <h3 className="feature-title">{feature.title}</h3>
-                            <p className="feature-description">{feature.description}</p>
-                        </div>
+                    {featuresData.map((feature, index) => (
+                        <motion.div
+                            key={index}
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true, margin: "-40px" }}
+                            transition={{ duration: 0.4, delay: index * 0.08, ease: [0.16, 1, 0.3, 1] }}
+                            className="feature-card-clean"
+                        >
+                            <div className="feature-card-top">
+                                <div className="feature-icon-box">
+                                    {feature.icon}
+                                </div>
+                                <span className="feature-tag font-mono">{feature.tag}</span>
+                            </div>
+                            <h3 className="feature-card-title font-display">{feature.title}</h3>
+                            <p className="feature-card-description font-sans">{feature.description}</p>
+                        </motion.div>
                     ))}
                 </div>
             </div>
